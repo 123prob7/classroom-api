@@ -7,4 +7,4 @@ export const mongo_connection_url =
 //local
 // export const cors_opt_url = "http://localhost:3001";
 //deploy
-export const cors_opt_url = "https://123prob7.github.io/";
+export const cors_opt_url = ["https://123prob7.github.io/", "https://123prob7.github.io"];
