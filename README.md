@@ -21,7 +21,7 @@ REST API Nodejs server for classroom app
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `className`      | `string` | **Required**. Id of item to fetch |
+| `className`      | `string` | **Required** Name of the class |
 | `section`      | `string` | Short description of the class |
 
 #### Login account
