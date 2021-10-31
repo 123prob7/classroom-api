@@ -31,7 +31,7 @@ const signUp = (req, res) => {
   });
 };
 
-// logging an existing account
+// logging into an existing account in database
 const logIn = (req, res) => {
   const { username, password } = req.body;
 
