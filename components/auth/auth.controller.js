@@ -1,5 +1,5 @@
 import User from "./model.user.js";
-import config from "../../config/index.js";
+import { secret, sessLifeTime } from "../../config/index.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
@@ -54,8 +54,8 @@ const logIn = (req, res) => {
     }
 
     const sessionUser = { userId: user._id, username: user.username };
-    const token = jwt.sign({ id: user._id }, config.secret, {
-      expiresIn: config.sessLifeTime, // 10 days
+    const token = jwt.sign({ id: user._id }, secret, {
+      expiresIn: sessLifeTime, // 10 days
     });
 
     req.session.user = sessionUser;
@@ -64,7 +64,7 @@ const logIn = (req, res) => {
       user: sessionUser,
       accessToken: token,
       status: 200,
-      message: "You have logged in successfully!"
+      message: "You have logged in successfully!",
     });
   });
 };
@@ -83,12 +83,13 @@ const logOut = (req, res, next) => {
   }
 };
 
-const getUser = (req, res) => {
-  const sessionUser = req.body.sessionUser
+const getUser = (req, res, next) => {
+  const sessionUser = req.body.sessionUser;
 
   if (sessionUser) {
     res.json({ user: sessionUser });
   }
+  next();
 };
 
 export default {

@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import config from "../config/index.js";
+import { secret } from "../config/index.js";
 
 const verifyToken = (req, res, next) => {
   const token = req.body.token;
@@ -9,7 +9,7 @@ const verifyToken = (req, res, next) => {
     return res.status(403).json({ message: "No token provided!" });
   }
 
-  jwt.verify(token, config.secret, (err, decoded) => {
+  jwt.verify(token, secret, (err, decoded) => {
     if (err) {
       return res.status(401).json({ message: "Unauthorized!" });
     }
