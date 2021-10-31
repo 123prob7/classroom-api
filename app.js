@@ -39,7 +39,7 @@ app.use(
     },
   })
 );
-app.use(cors({ origin: cors_opt_url }));
+app.use(cors());
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
